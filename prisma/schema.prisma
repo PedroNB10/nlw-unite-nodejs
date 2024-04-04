@@ -28,7 +28,18 @@ model Attendee {
   createdAt DateTime @default(now()) @map("created_at")
   eventId   String   @map("event_id")
   event     Event    @relation(fields: [eventId], references: [id]) //relacionamento entre as tabelas foreign key
+  Checkin   Checkin?
 
   @@unique([eventId, email]) // a combination of eventId and email must be unique
   @@map("attendees")
+}
+
+model Checkin {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  attendee   Attendee @relation(fields: [attendeeId], references: [id])
+  attendeeId Int      @unique @map("attendee_id")
+
+  @@map("checkins")
 }
