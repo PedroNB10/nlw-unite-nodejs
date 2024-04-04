@@ -3,8 +3,27 @@ Content-Type: application/json
 
 # Cabeçalhos
 {
-    "title": "Unite Summit 2024",
-    "details":"Um evento para quem é apaixonado por programação",
-    "maximumAttendees":100
+    "title": "Novo Evento Oficial",
+    "details":null,
+    "maximumAttendees":1
 
 }
+
+###
+
+POST http://localhost:3333/events/b5f35cde-47d7-4601-9895-b16b4d13d648/attendees
+Content-Type: application/json
+
+{
+    "name": "Pedro Nogueira",
+    "email": "pedro.nogue3ira.barboza@gmail.com"
+}
+
+###
+
+GET http://localhost:3333/events/b5f35cde-47d7-4601-9895-b16b4d13d648
+Content-Type: application/json
+
+###
+
+GET http://localhost:3333/attendees/1/badge

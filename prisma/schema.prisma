@@ -29,5 +29,6 @@ model Attendee {
   eventId   String   @map("event_id")
   event     Event    @relation(fields: [eventId], references: [id]) //relacionamento entre as tabelas foreign key
 
+  @@unique([eventId, email]) // a combination of eventId and email must be unique
   @@map("attendees")
 }
