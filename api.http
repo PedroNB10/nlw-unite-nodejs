@@ -3,7 +3,7 @@ Content-Type: application/json
 
 # Cabeçalhos
 {
-    "title": "Unite Summit",
+    "title": "Unite Summit 2024",
     "details":"Um evento para quem é apaixonado por programação",
     "maximumAttendees":100
 
