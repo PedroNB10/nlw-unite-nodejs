@@ -31,7 +31,7 @@ GET http://localhost:3333/attendees/1/badge
 ###
 
 #check in do usuário pelo id, então um mesmo usuário pode ter ids diferentes em eventos diferentes
-GET http://localhost:3333/attendees/5/check-in
+GET http://localhost:3333/attendees/7/check-in
 
 ###
 

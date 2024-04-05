@@ -3,6 +3,7 @@ import { z } from "zod";
 import { generateSlug } from "../utils/generate-slug";
 import { prisma } from "../lib/prisma";
 import { FastifyInstance } from "fastify";
+import { BadRequest } from "./_errors/bad-request";
 
 export async function createEvent(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -39,7 +40,7 @@ export async function createEvent(app: FastifyInstance) {
 
       // se o evento com o mesmo slug já existir, retorna um erro
       if (eventWithSameSlug) {
-        throw new Error("Event with same slug already exists");
+        throw new BadRequest("Event with same slug already exists");
       }
       // o método create do prisma é responsável por criar um novo evento no banco de dados
       // é uma promise, por isso o await
