@@ -1,8 +1,12 @@
 import fastify from "fastify";
 
+import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUi from "@fastify/swagger-ui";
+
 import {
   serializerCompiler,
   validatorCompiler,
+  jsonSchemaTransform,
 } from "fastify-type-provider-zod";
 import { createEvent } from "./routes/create-event";
 import { registerForEvent } from "./routes/register-for-event";
@@ -12,6 +16,26 @@ import { checkIn } from "./routes/check-in";
 import { getEventAttendees } from "./routes/get-event-attendees";
 
 const app = fastify();
+
+// gerando documentação
+app.register(fastifySwagger, {
+  swagger: {
+    consumes: ["application/json"],
+    produces: ["application/json"],
+    info: {
+      title: "pass.in API",
+      description:
+        "Especificações da API para o back-end da aplicação pass.in construída durante o NLW Unite da Rocketseat.",
+      version: "1.0.0",
+    },
+  },
+  transform: jsonSchemaTransform,
+});
+
+// para acessar o docs é só colocar http://localhost:3333/docs
+app.register(fastifySwaggerUi, {
+  routePrefix: "/docs",
+});
 // Add schema validator and serializer
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
