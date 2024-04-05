@@ -11,7 +11,9 @@ export async function checkIn(app: FastifyInstance) {
         params: z.object({
           attendeeId: z.coerce.number().int(),
         }),
-        response: {},
+        response: {
+          201: z.null(), // O corpo da mensagem será nulo
+        },
       },
     },
     async (request, reply) => {

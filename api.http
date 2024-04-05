@@ -3,27 +3,37 @@ Content-Type: application/json
 
 # Cabeçalhos
 {
-    "title": "Novo Evento Oficial",
+    "title": "Evento RoquetaSeat",
     "details":null,
-    "maximumAttendees":1
+    "maximumAttendees":100
 
 }
 
 ###
-
-POST http://localhost:3333/events/b5f35cde-47d7-4601-9895-b16b4d13d648/attendees
+# Register attendee on the event
+POST http://localhost:3333/events/e7951e2c-0f05-42af-9dd1-fa16f5a80e1a/attendees
 Content-Type: application/json
 
 {
-    "name": "Pedro Nogueira",
-    "email": "pedro.nogue3ira.barboza@gmail.com"
+    "name": "Ednaldo Pereira",
+    "email": "ednaldopereira.chansey@yahoo.com.br"
 }
 
 ###
 
-GET http://localhost:3333/events/b5f35cde-47d7-4601-9895-b16b4d13d648
-Content-Type: application/json
+GET http://localhost:3333/events/4bb22458-f09e-497d-b47b-680d9948ab7c
+
 
 ###
 
 GET http://localhost:3333/attendees/1/badge
+
+###
+
+#check in do usuário pelo id, então um mesmo usuário pode ter ids diferentes em eventos diferentes
+GET http://localhost:3333/attendees/5/check-in
+
+###
+
+# get all attendees from event, which can be checked in or not
+GET http://localhost:3333/events/e7951e2c-0f05-42af-9dd1-fa16f5a80e1a/attendees?query=pedro
